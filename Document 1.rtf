@@ -1,0 +1,249 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs28\lang9                              Coding Assessment - Aggregration\par
+1.Display the list of employees who have joined the company before 30th june 80 or after 31 dec 80.\par
+\par
+\b0 mysql> select * from emp where joindate <=1980-06-30 or joindate>1980-12-31;\par
++--------+---------+------------+------------+--------+\par
+| deptno | name    | job        | joindate   | salary |\par
++--------+---------+------------+------------+--------+\par
+|     10 | ramu    | clerk      | 1980-09-12 |   1500 |\par
+|     15 | Ram     | salesman   | 1978-04-09 |   2100 |\par
+|     18 | PRIYA   | ANAALYST   | 1980-12-03 |   1500 |\par
+|     60 | prakash | supervisor | 1980-08-03 |   1800 |\par
+|     76 | Ram     | salesman   | 1982-07-01 |   2000 |\par
+|     78 | Raj     | manager    | 1980-09-23 |   1800 |\par
++--------+---------+------------+------------+--------+\par
+6 rows in set, 2 warnings (0.00 sec)4 rows in set, 2 warnings (0.03 sec)\par
+\b 12.Display the name of the current user.\par
+\b0 mysql> select current_user();\par
++----------------+\par
+| current_user() |\par
++----------------+\par
+| root@localhost |\par
++----------------+\par
+1 row in set (0.00 sec)\par
+\b 13.Display the names of employees working in department number 10 or 20 and working as clerks , salesman or analyst.\par
+\b0 mysql> select * from emp where dept_no>10 and dept_no<20;\par
++---------+-------+----------+------------+--------+\par
+| dept_no | name  | job      | hiredate   | salary |\par
++---------+-------+----------+------------+--------+\par
+|      15 | ella  | salesman | 1981-12-01 |   2100 |\par
+|      18 | PRIYA | ANAALYST | 1980-12-03 |   1600 |\par
++---------+-------+----------+------------+--------+\par
+2 rows in set (0.00 sec)\par
+\b\par
+14.Display the names of employees whose name strat with alphabet's'.\par
+\par
+\b0 mysql> select *from emp where name like's%';\par
++--------+----------+---------+------------+--------+\par
+| deptno | name     | job     | joindate   | salary |\par
++--------+----------+---------+------------+--------+\par
+|     78 | suriya   | clerk   | 2000-09-12 |   1700 |\par
+|     78 | samantha | manager | 1998-08-11 |   1750 |\par
++--------+----------+---------+------------+--------+\par
+2 rows in set (0.03 sec)\par
+\par
+\par
+\b 15.Display employee name  from employee whose name ends with alphabet N\par
+\b0 mysql> select * from emp where name like '%n';\par
++--------+-------+---------+------------+--------+\par
+| deptno | name  | job     | joindate   | salary |\par
++--------+-------+---------+------------+--------+\par
+|     10 | sugan | clerk   | 1980-09-12 |   1500 |\par
+|     78 | sarun | manager | 1998-08-11 |   1750 |\par
++--------+-------+---------+------------+--------+\par
+2 rows in set (0.00 sec)\par
+\b 16.Display the employee name of employees whose names have second alphabet A in their names \par
+\b0\par
+mysql> select *from emp where name like '_a_';\par
++--------+------+----------+------------+--------+\par
+| deptno | name | job      | joindate   | salary |\par
++--------+------+----------+------------+--------+\par
+|     15 | Ram  | salesman | 1978-04-09 |   2100 |\par
+|     76 | Ram  | salesman | 1982-07-01 |   2000 |\par
+|     78 | Raj  | manager  | 1980-09-23 |   1800 |\par
++--------+------+----------+------------+--------+\par
+3 rows in set (0.00 sec)\par
+\b 17.display the names of all tables from the current user.\par
+\b0 mysql> show tables;\par
++------------------+\par
+| Tables_in_amazon |\par
++------------------+\par
+| cake             |\par
+| chips            |\par
+| chips1           |\par
+| emp              |\par
+| emp1             |\par
+| emp2             |\par
+| phone            |\par
+| pro              |\par
+| prod             |\par
+| prod1            |\par
+| product          |\par
+| snack            |\par
+| stu_mark         |\par
+| student          |\par
++------------------+\par
+14 rows in set (0.37 sec)\par
+\b 18.display the unique jobs in emp table.\par
+\b0 mysql> select distinct job from emp;\par
++------------+\par
+| job        |\par
++------------+\par
+| clerk      |\par
+| salesman   |\par
+| ANAALYST   |\par
+| supervisor |\par
+| manager    |\par
++------------+\par
+5 rows in set (0.03 sec)\par
+\b\par
+19.display the names of employee whoare not working as salesman or clerk or analyst.\par
+\par
+\b0 mysql> select *from emp where job not in('salesman','clerk','anaalyst');\par
++---------+----------+------------+------------+--------+\par
+| dept_no | name     | job        | hiredate   | salary |\par
++---------+----------+------------+------------+--------+\par
+|      60 | prakash  | supervisor | 1980-08-03 |   1800 |\par
+|      78 | Raj      | manager    | 1981-04-23 |   1800 |\par
+|      78 | samantha | manager    | 1981-04-23 |   1750 |\par
+|      78 | sarun    | manager    | 1981-04-23 |   1750 |\par
++---------+----------+------------+------------+--------+\par
+4 rows in set (0.03 sec)\par
+\b 20.Display the names and salary of employees in descending order of salary.\par
+\b0 mysql> select *from emp order by salary desc;\par
++--------+----------+------------+------------+--------+\par
+| deptno | name     | job        | joindate   | salary |\par
++--------+----------+------------+------------+--------+\par
+|     15 | Ram      | salesman   | 1978-04-09 |   2100 |\par
+|     76 | Ram      | salesman   | 1982-07-01 |   2000 |\par
+|     60 | prakash  | supervisor | 1980-08-03 |   1800 |\par
+|     78 | Raj      | manager    | 1980-09-23 |   1800 |\par
+|     78 | samantha | manager    | 1998-08-11 |   1750 |\par
+|     78 | sarun    | manager    | 1998-08-11 |   1750 |\par
+|     78 | suriya   | clerk      | 2000-09-12 |   1700 |\par
+|     75 | suriya   | clerk      | 2000-09-12 |   1700 |\par
+|     10 | sugan    | clerk      | 1980-09-12 |   1500 |\par
+|     18 | PRIYA    | ANAALYST   | 1980-12-03 |   1500 |\par
++--------+----------+------------+------------+--------+\par
+10 rows in set (0.00 sec)\par
+\b 21.Display the names,job,salary and increased by 15% labbel the column new salary.\par
+\b0 mysql> select name,job,salary ,(salary*15/100)as new_salary from emp;\par
++----------+------------+--------+------------+\par
+| name     | job        | salary | new_salary |\par
++----------+------------+--------+------------+\par
+| priya    | clerk      |   1500 |   225.0000 |\par
+| ella     | salesman   |   2100 |   315.0000 |\par
+| PRIYA    | ANAALYST   |   1600 |   240.0000 |\par
+| prakash  | supervisor |   1800 |   270.0000 |\par
+| Ram      | salesman   |   2000 |   300.0000 |\par
+| Raj      | manager    |   1800 |   270.0000 |\par
+| priya    | clerk      |   1700 |   255.0000 |\par
+| samantha | manager    |   1750 |   262.5000 |\par
+| priya    | clerk      |   1700 |   255.0000 |\par
+| sarun    | manager    |   1750 |   262.5000 |\par
++----------+------------+--------+------------+\par
+10 rows in set (0.08 sec)\par
+\b 22.Display the name of the employees whose name contains 'LL'.\b0\par
+mysql> select *from emp where name like '%ll%';\par
++--------+--------+----------+------------+--------+\par
+| deptno | name   | job      | joindate   | salary |\par
++--------+--------+----------+------------+--------+\par
+|     10 | allena | clerk    | 1980-09-12 |   1500 |\par
+|     15 | ella   | salesman | 1978-04-09 |   2100 |\par
+|     75 | ally   | clerk    | 2000-09-12 |   1700 |\par
++--------+--------+----------+------------+--------+\par
+3 rows in set (0.00 sec)\par
+\b 23.Display the name of the employees whose name contain 'A' as 4th character.\par
+\b0 mysql> select * from emp where name like '___a';\par
++--------+------+----------+------------+--------+\par
+| deptno | name | job      | joindate   | salary |\par
++--------+------+----------+------------+--------+\par
+|     15 | ella | salesman | 1978-04-09 |   2100 |\par
++--------+------+----------+------------+--------+\par
+1 row in set (0.00 sec)\par
+\b 25.Display the name,job and salary of the employees whose salary is not in the range of 2000 and 3000.\par
+\b0\fs26 mysql> select name,job,salary from emp where salary not between 2000 and 3000;\par
++----------+------------+--------+\par
+| name     | job        | salary |\par
++----------+------------+--------+\par
+| priya    | clerk      |   1500 |\par
+| PRIYA    | ANAALYST   |   1600 |\par
+| prakash  | supervisor |   1800 |\par
+| Raj      | manager    |   1800 |\par
+| priya    | clerk      |   1700 |\par
+| samantha | manager    |   1750 |\par
+| priya    | clerk      |   1700 |\par
+| sarun    | manager    |   1750 |\par
++----------+------------+--------+\par
+8 rows in set (0.00 sec)\par
+\b\fs28 26. Diplay the empno,job and hiredate of the employees who don't have MANAGER.\par
+\b0\fs26 mysql> select dept_no,job,hiredate from emp where job not like '%manager%';\par
++---------+------------+------------+\par
+| dept_no | job        | hiredate   |\par
++---------+------------+------------+\par
+|      10 | clerk      | 1980-09-12 |\par
+|      15 | salesman   | 1981-12-01 |\par
+|      18 | ANAALYST   | 1980-12-03 |\par
+|      60 | supervisor | 1980-08-03 |\par
+|      76 | salesman   | 1982-07-01 |\par
+|      78 | clerk      | 1981-04-23 |\par
+|      75 | clerk      | 2000-09-12 |\par
++---------+------------+------------+\par
+7 rows in set (0.02 sec)\par
+\b\fs28 27. Display the name and hiredate of the employees who have joined in the year '81'.\par
+\b0\fs26 mysql> select *from emp where hiredate like '1981%';\par
++---------+----------+----------+------------+--------+\par
+| dept_no | name     | job      | hiredate   | salary |\par
++---------+----------+----------+------------+--------+\par
+|      15 | ella     | salesman | 1981-12-01 |   2100 |\par
+|      78 | Raj      | manager  | 1981-04-23 |   1800 |\par
+|      78 | priya    | clerk    | 1981-04-23 |   1700 |\par
+|      78 | samantha | manager  | 1981-04-23 |   1750 |\par
+|      78 | sarun    | manager  | 1981-04-23 |   1750 |\par
++---------+----------+----------+------------+--------+\par
+5 rows in set (0.00 sec)\par
+\b\fs28 28. Display the name and hiredate of the employees first half of year in '81'.\par
+\b0\fs26 mysql> select * from emp where hiredate<='1981-01-01' or hiredate>='1981-12-31';\par
++---------+---------+------------+------------+--------+\par
+| dept_no | name    | job        | hiredate   | salary |\par
++---------+---------+------------+------------+--------+\par
+|      10 | priya   | clerk      | 1980-09-12 |   1500 |\par
+|      18 | PRIYA   | ANAALYST   | 1980-12-03 |   1600 |\par
+|      60 | prakash | supervisor | 1980-08-03 |   1800 |\par
+|      76 | Ram     | salesman   | 1982-07-01 |   2000 |\par
+|      75 | priya   | clerk      | 2000-09-12 |   1700 |\par
+|      43 | priya   | manager    | 1980-05-01 |   1800 |\par
++---------+---------+------------+------------+--------+\par
+6 rows in set (0.00 sec)\par
+\b\fs28 29. Display the following output ename earns sal but wants three times salary\par
+Example : KING earns 5000 but wants 15000\par
+\b0\fs26 mysql> select name,salary,(salary*3) as new_salary from emp;\par
++----------+--------+------------+\par
+| name     | salary | new_salary |\par
++----------+--------+------------+\par
+| priya    |   1500 |       4500 |\par
+| ella     |   2100 |       6300 |\par
+| PRIYA    |   1600 |       4800 |\par
+| prakash  |   1800 |       5400 |\par
+| Ram      |   2000 |       6000 |\par
+| Raj      |   1800 |       5400 |\par
+| priya    |   1700 |       5100 |\par
+| samantha |   1750 |       5250 |\par
+| priya    |   1700 |       5100 |\par
+| sarun    |   1750 |       5250 |\par
++----------+--------+------------+\par
+10 rows in set (0.00 sec)\par
+\b\fs28\par
+30. Display the details of the employees who have joined in the month of 'MAY'\par
+\b0\fs26 mysql> select * from emp where hiredate like '%05%';\par
++---------+-------+---------+------------+--------+\par
+| dept_no | name  | job     | hiredate   | salary |\par
++---------+-------+---------+------------+--------+\par
+|      43 | priya | manager | 1980-05-01 |   1800 |\par
++---------+-------+---------+------------+--------+\par
+1 row in set (0.00 sec)\par
+\b\fs28\par
+}
+ 

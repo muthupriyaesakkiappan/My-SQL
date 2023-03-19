@@ -1,0 +1,236 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs36\lang9                             CODING ASSIGNMENT - 4\par
+\par
+\fs32 1. Display the total number of employees working in the company\par
+\b0\fs26 mysql> select count(name) from comp;\par
++-------------+\par
+| count(name) |\par
++-------------+\par
+|           5 |\par
++-------------+\par
+1 row in set (0.00 sec)\par
+\b\fs32 2. Display the total salary and total commission to all employee\par
+\b0\fs26 mysql> select *,(salary - total_commision)as total from comp;\par
++--------+-------+----------+--------+-----------------+----------+\par
+| deptno | name  | job      | salary | total_commision | total    |\par
++--------+-------+----------+--------+-----------------+----------+\par
+|     10 | priya | clerk    |  15000 |          200.00 | 14800.00 |\par
+|     18 | renu  | salesman |  10000 |          200.00 |  9800.00 |\par
+|     12 | jeeva | manager  |   1500 |          100.00 |  1400.00 |\par
+|     18 | priya | salesman |  10000 |          200.00 |  9800.00 |\par
+|     12 | janu  | manager  |   2000 |          100.00 |  1900.00 |\par
++--------+-------+----------+--------+-----------------+----------+\par
+5 rows in set (0.00 sec)\par
+\b\fs32 3. Display the maximum salary from emp table.\par
+
+\pard\sa200\sl240\slmult1\b0\fs26 mysql> select max(salary) from comp;\par
++-------------+\par
+| max(salary) |\par
++-------------+\par
+|       15000 |\par
++-------------+\par
+1 row in set (0.00 sec)\par
+
+\pard\sa200\sl276\slmult1\b\fs32 4.Display the hiredate of junior most employee.\par
+\b0\fs26 mysql> select max(hiredate) from emp1;\par
++---------------+\par
+| max(hiredate) |\par
++---------------+\par
+| 2023-03-01    |\par
++---------------+\par
+1 row in set (0.00 sec)\par
+\b\fs32 5.Display the average salary from emp table.\par
+\b0\fs26 mysql> select avg(salary) from emp1;\par
++-------------+\par
+| avg(salary) |\par
++-------------+\par
+|  10200.0000 |\par
++-------------+\par
+1 row in set (0.00 sec)\par
+\b\fs36\par
+6.Display the maximum salary being paid to CLERK.\par
+\b0\fs26 mysql> select* from emp1;\par
++--------+----------+----------+--------+------------+\par
+| deptno | name     | job      | salary | hiredate   |\par
++--------+----------+----------+--------+------------+\par
+|     10 | priya    | clerk    |   8000 | 2000-01-17 |\par
+|     44 | renu     | manager  |  12000 | 2023-03-01 |\par
+|     20 | raja     | manager  |  12000 | 2010-01-27 |\par
+|     30 | sanjay   | salesman |  10000 | 2005-01-25 |\par
+|     20 | mahesh   | manager  |   9000 | 2006-08-18 |\par
+|     25 | gayathri | clerk    |  10000 | 2000-06-29 |\par
++--------+----------+----------+--------+------------+\par
+6 rows in set (0.00 sec)\par
+mysql> select max(salary) from emp1 where job='clerk';\par
++-------------+\par
+| max(salary) |\par
++-------------+\par
+|       10000 |\par
++-------------+\par
+1 row in set (0.00 sec)\par
+\b\fs36 7.Display the maximum salary being paid in dept no 20.\par
+\b0\fs26 mysql> select max(salary) from emp1 where deptno=20;\par
++-------------+\par
+| max(salary) |\par
++-------------+\par
+|       12000 |\par
++-------------+\par
+1 row in set (0.00 sec)\par
+\b\fs36\par
+\fs32 8.Display the minimum salary being paid to any SALESMAN.\par
+\b0\fs26 mysql> select *from emp1;\par
++--------+----------+----------+--------+------------+\par
+| deptno | name     | job      | salary | hiredate   |\par
++--------+----------+----------+--------+------------+\par
+|     10 | priya    | clerk    |   8000 | 2000-01-17 |\par
+|     44 | renu     | manager  |  12000 | 2023-03-01 |\par
+|     20 | raja     | manager  |  12000 | 2010-01-27 |\par
+|     30 | sanjay   | salesman |  10000 | 2005-01-25 |\par
+|     20 | mahesh   | manager  |   9000 | 2006-08-18 |\par
+|     25 | gayathri | clerk    |  10000 | 2000-06-29 |\par
+|     25 | gayathri | salesman |   7000 | 2000-06-29 |\par
++--------+----------+----------+--------+------------+\par
+7 rows in set (0.00 sec)\par
+mysql> select min(salary) from emp1 where job='salesman';\par
++-------------+\par
+| min(salary) |\par
++-------------+\par
+|        7000 |\par
++-------------+\par
+1 row in set (0.00 sec)\par
+\b\fs36\par
+\fs34 9.Display the average salary drawn by managers.\par
+\b0\fs26 mysql> select avg(salary)from emp1 where job='manager';\par
++-------------+\par
+| avg(salary) |\par
++-------------+\par
+|  11000.0000 |\par
++-------------+\par
+1 row in set (0.00 sec)\par
+\fs32\par
+\b 10.Display the total salary drawn by analyst working in dept no 20.\par
+\b0\fs26 mysql> select sum(salary)from emp1 where job='analyst' and deptno=20;\par
++-------------+\par
+| sum(salary) |\par
++-------------+\par
+|        7000 |\par
++-------------+\par
+1 row in set (0.00 sec)\par
+\b\fs32\par
+11. Display Department numbers and total number of employees working in each Department?\par
+\b0\fs26 mysql> select deptno,count(name) from emp1 group by deptno;\par
++--------+-------------+\par
+| deptno | count(name) |\par
++--------+-------------+\par
+|     10 |           1 |\par
+|     44 |           1 |\par
+|     20 |           3 |\par
+|     30 |           1 |\par
+|     25 |           2 |\par
++--------+-------------+\par
+5 rows in set (0.00 sec)\par
+\b\fs32\par
+12. Display the various jobs and total number of employees working in each job group?\par
+\b0\fs26 mysql> select job,count(name) from emp1 group by job;\par
++----------+-------------+\par
+| job      | count(name) |\par
++----------+-------------+\par
+| clerk    |           2 |\par
+| manager  |           3 |\par
+| salesman |           2 |\par
+| Analyst  |           1 |\par
++----------+-------------+select \par
+4 rows in set (0.00 sec)\par
+\b\fs32 13.Display department numbers and Total Salary for each Department?\par
+\b0\fs26 mysql> select deptno,sum(salary) from emp1 group by deptno;\par
++--------+-------------+\par
+| deptno | sum(salary) |\par
++--------+-------------+\par
+|     10 |        8000 |\par
+|     44 |       12000 |\par
+|     20 |       28000 |\par
+|     30 |       10000 |\par
+|     25 |       17000 |\par
++--------+-------------+\par
+5 rows in set (0.01 sec)\par
+\b\fs32 14.Display department numbers and Maximum Salary from each Department?\par
+\b0\fs26 mysql> select deptno,max(salary) from emp1 group by deptno;\par
++--------+-------------+\par
+| deptno | max(salary) |\par
++--------+-------------+\par
+|     10 |        8000 |\par
+|     44 |       12000 |\par
+|     20 |       12000 |\par
+|     30 |       10000 |\par
+|     25 |       10000 |\par
++--------+-------------+\par
+5 rows in set (0.00 sec)\par
+\b\fs32\par
+15.Display various jobs and Total Salary for each job?\par
+\b0\fs26 mysql> select job, sum(salary)from emp1 group by job;\par
++----------+-------------+\par
+| job      | sum(salary) |\par
++----------+-------------+\par
+| clerk    |       18000 |\par
+| manager  |       33000 |\par
+| salesman |       17000 |\par
+| Analyst  |        7000 |\par
++----------+-------------+\par
+4 rows in set (0.00 sec)\par
+\b\fs32 16.Display each job along with min of salary being paid in each job group?\par
+\b0\fs26 mysql> select *from emp1;\par
++--------+----------+----------+--------+------------+\par
+| deptno | name     | job      | salary | hiredate   |\par
++--------+----------+----------+--------+------------+\par
+|     10 | priya    | clerk    |   8000 | 2000-01-17 |\par
+|     44 | renu     | manager  |  12000 | 2023-03-01 |\par
+|     20 | raja     | manager  |  12000 | 2010-01-27 |\par
+|     30 | sanjay   | salesman |  10000 | 2005-01-25 |\par
+|     20 | mahesh   | manager  |   9000 | 2006-08-18 |\par
+|     25 | gayathri | clerk    |  10000 | 2000-06-29 |\par
+|     25 | gayathri | salesman |   7000 | 2000-06-29 |\par
+|     20 | sarun    | Analyst  |   7000 | 2012-06-29 |\par
++--------+----------+----------+--------+------------+\par
+8 rows in set (0.00 sec)\par
+\par
+mysql> select job,min(salary) from emp1 group by job;\par
++----------+-------------+\par
+| job      | min(salary) |\par
++----------+-------------+\par
+| clerk    |        8000 |\par
+| manager  |        9000 |\par
+| salesman |        7000 |\par
+| Analyst  |        7000 |\par
++----------+-------------+\par
+4 rows in set (0.00 sec)\par
+\b\fs32 17. Display the department Number with more than three employees in each department?\par
+\b0\fs26 mysql> select deptno,count(deptno) from emp1 group by deptno having count(*)>3;\par
++--------+---------------+\par
+| deptno | count(deptno) |\par
++--------+---------------+\par
+|     20 |             5 |\par
++--------+---------------+\par
+1 row in set (0.00 sec)\par
+\b\fs32\par
+18. Display various jobs along with total salary for each of the job where total salary is greater than 2500?\par
+\b0\fs26 mysql> select job,sum(salary) from emp1 group by job having sum(salary)>2500;\par
++----------+-------------+\par
+| job      | sum(salary) |\par
++----------+-------------+\par
+| clerk    |       55000 |\par
+| manager  |      135000 |\par
+| salesman |       17000 |\par
+| Analyst  |       45000 |\par
++----------+-------------+\par
+4 rows in set (0.62 sec)\par
+\b\fs32 19. Display the various jobs along with total number of employees in each job.The output should contain only those jobs with more than three employees?\par
+\b0\fs26 mysql> select job,count(name)from emp1 group by job having count(job)>3;\par
++---------+-------------+\par
+| job     | count(name) |\par
++---------+-------------+\par
+| manager |           4 |\par
++---------+-------------+\par
+1 row in set (0.00 sec)\par
+}
+ 

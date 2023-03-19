@@ -1,0 +1,281 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs36\lang9                             CODING ASSIGNMENT - 3\par
+\par
+\fs32 1) Create the following tables\par
+a) studentprofile(rollno,name,dob,department,city)\par
+\b0\fs26 mysql> desc stud;\par
++------------+-------------+------+-----+---------+-------+\par
+| Field      | Type        | Null | Key | Default | Extra |\par
++------------+-------------+------+-----+---------+-------+\par
+| rollno     | int         | YES  |     | NULL    |       |\par
+| name       | varchar(20) | YES  |     | NULL    |       |\par
+| dob        | date        | YES  |     | NULL    |       |\par
+| department | varchar(20) | YES  |     | NULL    |       |\par
+| city       | varchar(20) | YES  |     | NULL    |       |\par
++------------+-------------+------+-----+---------+-------+\par
+5 rows in set (0.00 sec)\b\fs32\par
+b) marks (rollno,name,mark1,mark2)\b0\fs26\par
+mysql> desc marks;\par
++--------+-------------+------+-----+---------+-------+\par
+| Field  | Type        | Null | Key | Default | Extra |\par
++--------+-------------+------+-----+---------+-------+\par
+| rollno | int         | YES  |     | NULL    |       |\par
+| name   | varchar(20) | YES  |     | NULL    |       |\par
+| mark1  | int         | YES  |     | NULL    |       |\par
+| mark2  | int         | YES  |     | NULL    |       |\par
++--------+-------------+------+-----+---------+-------+\par
+4 rows in set (0.00 sec)\par
+\b\fs32 2) insert 5 different records to the above tables.\par
+\b0\fs26\par
+mysql> select *from stud;\par
++--------+---------+------------+------------+------------+\par
+| rollno | name    | dob        | department | city       |\par
++--------+---------+------------+------------+------------+\par
+|      1 | priya   | 2000-02-12 | Bsc        | coimbatore |\par
+|      2 | Raj     | 2002-02-09 | Bsc        | selam      |\par
+|      3 | Renu    | 2004-02-12 | Bcom       | coimbatore |\par
+|      4 | Raj     | 2002-02-09 | Msc        | sivakasi   |\par
+|      5 | Prakash | 2006-09-03 | EEE        | mathurai   |\par
++--------+---------+------------+------------+------------+\par
+5 rows in set (0.00 sec)\par
+\par
+mysql> select *from marks;\par
++--------+-------+-------+-------+\par
+| rollno | name  | mark1 | mark2 |\par
++--------+-------+-------+-------+\par
+|      1 | priya |    45 |    76 |\par
+|      2 | raj   |    45 |    76 |\par
+|      3 | divya |    90 |    90 |\par
+|      4 | raj   |    59 |    88 |\par
+|      5 | Renu  |    75 |    96 |\par
++--------+-------+-------+-------+\par
+5 rows in set (0.00 sec)\par
+\b\fs32 3) add a column total to marks table.\par
+\par
+\b0\fs26 mysql> alter table marks add total int;\par
+Query OK, 0 rows affected (0.29 sec)\par
+Records: 0  Duplicates: 0  Warnings: 0\par
+\par
+mysql> select *from marks;\par
++--------+-------+-------+-------+-------+\par
+| rollno | name  | mark1 | mark2 | total |\par
++--------+-------+-------+-------+-------+\par
+|      1 | priya |    45 |    76 |  NULL |\par
+|      2 | raj   |    45 |    76 |  NULL |\par
+|      3 | divya |    90 |    90 |  NULL |\par
+|      4 | raj   |    59 |    88 |  NULL |\par
+|      5 | Renu  |    75 |    96 |  NULL |\par
++--------+-------+-------+-------+-------+\par
+5 rows in set (0.00 sec)\par
+\b\fs32\par
+4) change the column name dob to dateofbirth.\par
+\b0\fs26 mysql> alter table stud change dob date_of_birth date;\par
+Query OK, 0 rows affected (0.15 sec)\par
+Records: 0  Duplicates: 0  Warnings: 0\par
+mysql> select * from stud;\par
++--------+---------+---------------+------------+------------+\par
+| rollno | name    | date_of_birth | department | city       |\par
++--------+---------+---------------+------------+------------+\par
+|      1 | priya   | 2000-02-12    | Bsc        | coimbatore |\par
+|      2 | Raj     | 2002-02-09    | Bsc        | selam      |\par
+|      3 | Renu    | 2004-02-12    | Bcom       | coimbatore |\par
+|      4 | Raj     | 2002-02-09    | Msc        | sivakasi   |\par
+|      5 | Prakash | 2006-09-03    | EEE        | mathurai   |\par
++--------+---------+---------------+------------+------------+\par
+5 rows in set (0.00 sec)\par
+\b\fs32 5) display the structure of the above tables.\par
+\b0\fs26 mysql> desc stud;\par
++---------------+-------------+------+-----+---------+-------+\par
+| Field         | Type        | Null | Key | Default | Extra |\par
++---------------+-------------+------+-----+---------+-------+\par
+| rollno        | int         | YES  |     | NULL    |       |\par
+| name          | varchar(20) | YES  |     | NULL    |       |\par
+| date_of_birth | date        | YES  |     | NULL    |       |\par
+| department    | varchar(20) | YES  |     | NULL    |       |\par
+| city          | varchar(20) | YES  |     | NULL    |       |\par
++---------------+-------------+------+-----+---------+-------+\par
+5 rows in set (0.00 sec)\par
+\b\fs32 6) List the tables which you have created.\par
+\b0\fs26 mysql> show tables;\par
++------------------+\par
+| Tables_in_amazon |\par
++------------------+\par
+| cake             |\par
+| chips            |\par
+| chips1           |\par
+| emp              |\par
+| emp1             |\par
+| emp2             |\par
+| marks            |\par
+| phone            |\par
+| pro              |\par
+| prod             |\par
+| prod1            |\par
+| product          |\par
+| snack            |\par
+| stu_mark         |\par
+| stud             |\par
+| student          |\par
++------------------+\par
+16 rows in set (0.08 sec)\par
+\b\fs32 7) Calculate total marks for each student and update in marks table.\par
+\b0\fs26 mysql> select *,(mark1+mark2) as total_marks from marks;\par
++--------+-------+-------+-------+-------------+\par
+| rollno | name  | mark1 | mark2 | total_marks |\par
++--------+-------+-------+-------+-------------+\par
+|      1 | priya |    45 |    76 |         121 |\par
+|      2 | raj   |    45 |    76 |         121 |\par
+|      3 | divya |    90 |    90 |         180 |\par
+|      4 | raj   |    59 |    88 |         147 |\par
+|      5 | Renu  |    75 |    96 |         171 |\par
++--------+-------+-------+-------+-------------+\par
+5 rows in set (0.00 sec)\b\fs32\par
+8) remove the 4 th rollno from studentprofile  table.\par
+\b0\fs26 mysql> delete from stud where rollno=4;\par
+Query OK, 1 row affected (0.07 sec)\par
+mysql> select * from stud;\par
++--------+---------+---------------+------------+------------+\par
+| rollno | name    | date_of_birth | department | city       |\par
++--------+---------+---------------+------------+------------+\par
+|      1 | priya   | 2000-02-12    | Bsc        | coimbatore |\par
+|      2 | Raj     | 2002-02-09    | Bsc        | selam      |\par
+|      3 | Renu    | 2004-02-12    | Bcom       | coimbatore |\par
+|      5 | Prakash | 2006-09-03    | EEE        | mathurai   |\par
++--------+---------+---------------+------------+------------+\par
+4 rows in set (0.00 sec)\par
+\b\fs32 9) Display all the records of both the tables.\par
+\b0\fs26 mysql>  select *from marks;\par
++--------+-------+-------+-------+\par
+| rollno | name  | mark1 | mark2 |\par
++--------+-------+-------+-------+\par
+|      1 | priya |    45 |    76 |\par
+|      2 | raj   |    45 |    76 |\par
+|      3 | divya |    90 |    90 |\par
+|      4 | raj   |    59 |    88 |\par
+|      5 | Renu  |    75 |    96 |\par
++--------+-------+-------+-------+\par
+5 rows in set (0.00 sec)\par
+mysql> select*from stud;\par
++--------+---------+---------------+------------+------------+\par
+| rollno | name    | date_of_birth | department | city       |\par
++--------+---------+---------------+------------+------------+\par
+|      1 | priya   | 2000-02-12    | Bsc        | coimbatore |\par
+|      2 | Raj     | 2002-02-09    | Bsc        | selam      |\par
+|      3 | Renu    | 2004-02-12    | Bcom       | coimbatore |\par
+|      5 | Prakash | 2006-09-03    | EEE        | mathurai   |\par
++--------+---------+---------------+------------+------------+\par
+4 rows in set (0.00 sec)\par
+\b\fs32 10) save your changes.\par
+mysql> alter table stud change name stud_name varchar(20);\par
+Query OK, 0 rows affected (0.16 sec)\par
+Records: 0  Duplicates: 0  Warnings: 0\par
+\b0\fs26 mysql> select * from stud;\par
++--------+-----------+---------------+------------+------------+\par
+| rollno | stud_name | date_of_birth | department | city       |\par
++--------+-----------+---------------+------------+------------+\par
+|      1 | priya     | 2000-02-12    | Bsc        | coimbatore |\par
+|      2 | Raj       | 2002-02-09    | Bsc        | selam      |\par
+|      3 | Renu      | 2004-02-12    | Bcom       | coimbatore |\par
+|      5 | Prakash   | 2006-09-03    | EEE        | mathurai   |\par
++--------+-----------+---------------+------------+------------+\par
+4 rows in set (0.00 sec)\par
+\b\fs32 11) add two more columns average and grade to marks table.\par
+
+\pard\sa200\sl240\slmult1\b0\fs26 mysql> alter table marks add average float;\par
+Query OK, 0 rows affected (0.10 sec)\par
+Records: 0  Duplicates: 0  Warnings: 0\par
+mysql> alter table marks add grade bigint;\par
+Query OK, 0 rows affected (0.29 sec)\par
+Records: 0  Duplicates: 0  Warnings: 0\par
+mysql> select * from marks;\par
++--------+-------+-------+-------+---------+-------+\par
+| rollno | name  | mark1 | mark2 | average | grade |\par
++--------+-------+-------+-------+---------+-------+\par
+|      1 | priya |    45 |    76 |    NULL |  NULL |\par
+|      2 | raj   |    45 |    76 |    NULL |  NULL |\par
+|      3 | divya |    90 |    90 |    NULL |  NULL |\par
+|      4 | raj   |    59 |    88 |    NULL |  NULL |\par
+|      5 | Renu  |    75 |    96 |    NULL |  NULL |\par
++--------+-------+-------+-------+---------+-------+\par
+5 rows in set (0.00 sec)\b\fs32\par
+
+\pard\sa200\sl276\slmult1 12) calculate the average for all the students.\par
+
+\pard\sa200\sl240\slmult1\b0\fs26 mysql> select *,(mark1+mark2)/2 as average from marks;\par
++--------+-------+-------+-------+-------+---------+\par
+| rollno | name  | mark1 | mark2 | grade | average |\par
++--------+-------+-------+-------+-------+---------+\par
+|      1 | priya |    45 |    76 |  NULL | 60.5000 |\par
+|      2 | raj   |    45 |    76 |  NULL | 60.5000 |\par
+|      3 | divya |    90 |    90 |  NULL | 90.0000 |\par
+|      4 | raj   |    59 |    88 |  NULL | 73.5000 |\par
+|      5 | Renu  |    75 |    96 |  NULL | 85.5000 |\par
++--------+-------+-------+-------+-------+---------+\par
+5 rows in set (0.00 sec)\par
+
+\pard\sa200\sl276\slmult1\b\fs32 13) Calculate the grade (if both the marks are above 40 then grade should be pass if less than 40 grade should be fail).\par
+\b0\fs26 mysql> update marks set grade='pass' where (mark1>40 and mark2>40);\par
+Query OK, 2 rows affected (0.22 sec)\par
+Rows matched: 2  Changed: 2  Warnings: 0\par
+mysql> select *from marks;\par
++--------+--------+-------+-------+-------+\par
+| rollno | name   | mark1 | mark2 | grade |\par
++--------+--------+-------+-------+-------+\par
+|      1 | priya  |    90 |    89 | pass  |\par
+|      2 | renu   |    80 |    76 | pass  |\par
+|      3 | muthu  |    15 |    30 | NULL  |\par
+|      4 | mahesh |    17 |     7 | NULL  |\par
++--------+--------+-------+-------+-------+\par
+4 rows in set (0.00 sec)\par
+mysql> update marks set grade='fail' where (mark1<40 and mark2<40);\par
+Query OK, 2 rows affected (0.04 sec)\par
+Rows matched: 2  Changed: 2  Warnings: 0\par
+mysql> select *from marks;\par
++--------+--------+-------+-------+-------+\par
+| rollno | name   | mark1 | mark2 | grade |\par
++--------+--------+-------+-------+-------+\par
+|      1 | priya  |    90 |    89 | pass  |\par
+|      2 | renu   |    80 |    76 | pass  |\par
+|      3 | muthu  |    15 |    30 | fail  |\par
+|      4 | mahesh |    17 |     7 | fail  |\par
++--------+--------+-------+-------+-------+\par
+4 rows in set (0.00 sec)\par
+\b\fs32 14) Remove the column average .\par
+\b0\fs26 mysql> alter table marks drop column average;\par
+Query OK, 0 rows affected (0.11 sec)\par
+Records: 0  Duplicates: 0  Warnings: 0\par
+\par
+mysql> select * from marks;\par
++--------+-------+-------+-------+-------+\par
+| rollno | name  | mark1 | mark2 | grade |\par
++--------+-------+-------+-------+-------+\par
+|      1 | priya |    45 |    76 |  NULL |\par
+|      2 | raj   |    45 |    76 |  NULL |\par
+|      3 | divya |    90 |    90 |  NULL |\par
+|      4 | raj   |    59 |    88 |  NULL |\par
+|      5 | Renu  |    75 |    96 |  NULL |\par
++--------+-------+-------+-------+-------+\par
+5 rows in set (0.00 sec)\par
+\b\fs32\par
+15) Remove all the records from the table.\par
+\b0\fs26 mysql> truncate table marks;\par
+Query OK, 0 rows affected (0.85 sec)\par
+\par
+mysql> select *from marks;\par
+Empty set (0.00 sec)\par
+\b\fs32 16) confirm your changes\par
+\b0\fs26 mysql> desc marks;\par
++--------+-------------+------+-----+---------+-------+\par
+| Field  | Type        | Null | Key | Default | Extra |\par
++--------+-------------+------+-----+---------+-------+\par
+| rollno | int         | YES  |     | NULL    |       |\par
+| name   | varchar(20) | YES  |     | NULL    |       |\par
+| mark1  | int         | YES  |     | NULL    |       |\par
+| mark2  | int         | YES  |     | NULL    |       |\par
+| grade  | bigint      | YES  |     | NULL    |       |\par
++--------+-------------+------+-----+---------+-------+\par
+5 rows in set (0.01 sec)\par
+\b\fs32\par
+}
+ 
